@@ -17,16 +17,12 @@
 /* --- Mobile Centering Fix --- */
 @media screen and (max-width: 768px) {
   .header {
-    left: 0;           
-    translate: none;      
-    width: 90vw;         
-    border-radius: 0;     
-    margin:5px;
-    margin-left:15px;
-    border-radius: 20px;
-  }
+    width: 80%; 
+    margin-top: 10px; 
+    left: none;
+  translate: none;
+    }
 }
-
 .header__nav {
   display: flex;
   justify-content: space-between;
@@ -34,7 +30,7 @@
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 1rem;
+  padding: 0 2rem;
 }
 
 .header__logo {
@@ -74,7 +70,6 @@ body.dark-mode .header.scrolled {
   list-style: none;
   padding: 0;
   margin: 0;
-  gap: 1.5rem;
 }
 
 .header__link {
@@ -228,15 +223,10 @@ body.dark-mode .header__toggle {
   }
 }
 
-/* --- Add this to your index.css file --- */
-
-/* Style for the active navigation link */
 .header__link.active {
-  /* Use your theme's primary color */
   color: var(--first-color);
 }
 
-/* Make the underline effect appear for the active link */
 .header__link.active::after {
   width: 100%;
 }
