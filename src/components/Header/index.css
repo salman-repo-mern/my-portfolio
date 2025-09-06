@@ -19,8 +19,6 @@
   .header {
     width: 80%; 
     margin-top: 10px; 
-    left: none;
-  translate: none;
     }
 }
 .header__nav {
@@ -70,6 +68,7 @@ body.dark-mode .header.scrolled {
   list-style: none;
   padding: 0;
   margin: 0;
+  gap: 1.5rem;
 }
 
 .header__link {
@@ -223,10 +222,15 @@ body.dark-mode .header__toggle {
   }
 }
 
+/* --- Add this to your index.css file --- */
+
+/* Style for the active navigation link */
 .header__link.active {
+  /* Use your theme's primary color */
   color: var(--first-color);
 }
 
+/* Make the underline effect appear for the active link */
 .header__link.active::after {
   width: 100%;
 }
