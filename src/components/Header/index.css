@@ -14,7 +14,13 @@
   border-radius: 25px;
   margin-top: 15px;
 }
-
+/* --- Mobile Centering Fix --- */
+@media screen and (max-width: 768px) {
+  .header {
+    width: 80%; 
+    margin-top: 10px; 
+    }
+}
 .header__nav {
   display: flex;
   justify-content: space-between;
