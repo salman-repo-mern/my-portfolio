@@ -1,0 +1,356 @@
+/* --- Optimized Font Import --- */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+/* ===== VARIABLES ===== */
+:root {
+  --body-color: rgb(250, 250, 250);
+  --color-white: rgb(255, 255, 255);
+  --text-color-second: rgb(68, 68, 68);
+  --text-color-third: rgb(30, 159, 171);
+  --first-color: rgb(110, 87, 224);
+  --first-color-hover: rgb(40, 91, 212);
+  --second-color: rgb(110, 87, 224);
+  --fourth-color: rgb(183, 230, 174);
+  --first-shadow-color: rgba(0, 0, 0, 0.1);
+}
+
+/* ===== BASE & GLOBAL STYLES ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--body-color);
+}
+
+i {
+  font-size: 16px;
+}
+
+/* ===== CUSTOM SCROLLBAR ===== */
+::-webkit-scrollbar {
+  width: 10px;
+  border-radius: 25px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 30px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #bbb;
+}
+
+/* ===== UTILITY & REUSABLE CLASSES ===== */
+.section {
+  padding-block: 5em;
+}
+
+.top-header {
+  text-align: center;
+  margin-bottom: 5em;
+}
+.top-header h1 {
+  font-weight: 600;
+  color: var(--text-color-second);
+  margin-bottom: 10px;
+}
+.top-header span {
+  color: #999;
+}
+
+.btn {
+  font-weight: 500;
+  padding: 12px 20px;
+  background: #efefef;
+  border: none; /* Removed border that used a non-existent variable */
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background 0.4s, color 0.4s;
+}
+.btn > i {
+  margin-left: 10px;
+}
+.btn:hover {
+  background: var(--second-color);
+  color: var(--color-white);
+}
+
+/* ===== ABOUT SECTION ===== */
+.about-info {
+  position: relative;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding: 30px 20px 70px 20px;
+  width: 30vw;
+  background: var(--color-white);
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+    rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+  border-radius: 20px;
+}
+.about-info h3 {
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--text-color-second);
+  margin-bottom: 15px;
+}
+.about-info p {
+  text-align: center;
+  font-size: 15px;
+  color: #777;
+}
+.about-btn button {
+  position: absolute;
+  right: 20px;
+  bottom: 20px;
+  background: var(--first-color);
+  color: var(--color-white);
+  border-radius: 30px;
+}
+.about-btn button:hover {
+  background: var(--first-color-hover);
+}
+
+/* ===== SKILLS SECTION ===== */
+.skills-box {
+  margin: 10px;
+}
+.skills-header {
+  margin-bottom: 30px;
+}
+.skills-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px; /* Slightly increased gap for better spacing */
+}
+.skills-list span {
+  font-size: 14px;
+  background: var(--first-color);
+  color: var(--color-white);
+  padding: 4px 12px; /* Increased padding */
+  border-radius: 5px;
+}
+
+/* ===== PROJECTS SECTION ===== */
+.projects-section {
+  /* Converted from #projects ID */
+  max-width: 95vw;
+  margin: 0 auto 50px auto; /* Centered with auto margins */
+}
+.project-container {
+  display: flex;
+  width: 100%;
+  justify-content: center; /* Changed to center for better alignment */
+  gap: 20px;
+  flex-wrap: wrap;
+}
+.project-box {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 30%;
+  height: 250px;
+  background: var(--color-white);
+  border-radius: 20px;
+  box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
+  overflow: hidden;
+  text-align: center;
+}
+.project-box h3 {
+  z-index: 2; /* Ensure text is above hover effect */
+  transition: color 0.3s ease;
+}
+.project-box i {
+  z-index: 2; /* Ensure icon is above hover effect */
+  transition: color 0.3s ease;
+}
+.project-box label {
+  font-size: 15px;
+  color: #777;
+  z-index: 2; /* Ensure label is above hover effect */
+  transition: color 0.3s ease;
+}
+.project-box::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: var(--second-color); /* Changed to a color for visibility */
+  border-radius: 50%; /* Changed to circle for a smoother effect */
+  transform: translate(-50%, -50%);
+  transition: width 0.5s ease, height 0.5s ease;
+  z-index: 1;
+}
+.project-box:hover::after {
+  width: 220%; /* Ensures full coverage */
+  height: 220%;
+}
+.project-box:hover h3,
+.project-box:hover label,
+.project-box:hover i {
+  color: var(--color-white);
+}
+
+/* ===== CONTACT SECTION ===== */
+.contact-info {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px 30px;
+  width: 100%;
+  height: 315px;
+  background: var(--fourth-color); /* Using your variable */
+  border-radius: 10px;
+  box-shadow: 1px 8px 10px 2px var(--first-shadow-color);
+  overflow: hidden;
+  color: var(--color-white);
+}
+.contact-info > * {
+  position: relative;
+  z-index: 2;
+  transition: color 0.5s ease;
+}
+.contact-info h2 {
+  margin-bottom: 20px;
+}
+.contact-info p {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-block: 5px;
+}
+.contact-info p i {
+  font-size: 18px;
+}
+.contact-info::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: var(--color-white);
+  transform: translate(-50%, -50%);
+  transition: width 0.8s ease, height 0.8s ease;
+  z-index: 1;
+  border-radius: 50%;
+}
+.contact-info:hover::after {
+  width: 200%;
+  height: 200%;
+}
+.contact-info:hover > * {
+  color: var(--text-color-second);
+}
+
+.form-control {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%; /* Changed from 90% for better alignment in columns */
+  background-color: #f4f6f8;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+.form-inputs {
+  display: flex;
+  gap: 10px;
+  width: 100%;
+}
+.input-field {
+  width: 50%;
+  height: 55px;
+  background: transparent;
+  border: 2px solid var(--first-color);
+  border-radius: 10px;
+  padding-inline: 20px;
+  outline: none;
+}
+.input-subject {
+  width: 100%;
+}
+textarea {
+  width: 100%;
+  height: 120px;
+  background: transparent;
+  border: 2px solid var(--first-color);
+  border-radius: 10px;
+  padding: 15px 20px;
+  outline: none;
+  resize: none;
+}
+.form-button > .btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--second-color);
+  color: var(--color-white);
+}
+.form-button > .btn:hover {
+  background: var(--first-color-hover);
+}
+.form-button i {
+  font-size: 18px;
+  transform: rotate(-45deg); /* Use transform instead of rotate */
+}
+
+/* ===== RESPONSIVE DESIGN ===== */
+
+/* --- Layout for smaller desktops and large tablets --- */
+@media only screen and (max-width: 1024px) {
+  .project-box {
+    width: 48%; /* Use percentages for better wrapping */
+  }
+}
+
+/* --- Layout for tablets --- */
+@media only screen and (max-width: 900px) {
+  .row {
+    flex-direction: column;
+    align-items: center; /* Center items when stacked */
+  }
+  .col {
+    width: 90%; /* Give some horizontal space */
+    max-width: 500px; /* Prevent it from getting too wide */
+  }
+  .about-info {
+    width: 100%;
+  }
+  .project-container {
+    justify-content: center;
+  }
+  .project-box {
+    width: 80%;
+    max-width: 400px;
+  }
+}
+
+/* --- Layout for mobile devices --- */
+@media only screen and (max-width: 540px) {
+  .form-inputs {
+    flex-direction: column;
+  }
+  .input-field {
+    width: 100%;
+  }
+  .project-box {
+    width: 95%;
+  }
+}

@@ -1,0 +1,28 @@
+.vertical-timeline-element-subtitle {
+  margin-top: 10px;
+  color: blueviolet;
+  font-size: 18px;
+}
+#education-container {
+  margin-bottom: 30px;
+}
+
+@media (max-width: 785px) {
+  #education-container {
+    margin-bottom: 20px;
+  }
+}
+
+.vertical-timeline-element-subtitle {
+  margin-top: 10px;
+  font-size: 18px;
+  color: #673ab7;
+}
+
+body.dark-mode .vertical-timeline-element-subtitle {
+  color: #00ffff;
+}
+
+.vertical-timeline::before {
+  background: #5b5858;
+}

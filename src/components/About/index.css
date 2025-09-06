@@ -1,0 +1,187 @@
+/* --- Animations --- */
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* --- Main Layout --- */
+.mainContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10vh;
+  padding: 20px;
+}
+
+.about-info {
+  max-width: 75vw;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.about-info p {
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+/* --- Tabs --- */
+.tabContainer {
+  display: flex;
+  gap: 30px;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+.tabButton {
+  background: none;
+  border: none;
+  font-size: 18px;
+  font-weight: 500;
+  color: var(--text-color-second, #555); /* Fallback color */
+  cursor: pointer;
+  position: relative;
+  padding-bottom: 4px;
+  transition: color 0.3s ease;
+}
+
+.tabButton:hover {
+  color: var(--first-color, #007bff); /* Fallback color */
+}
+
+.tabButton::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0%;
+  height: 2px;
+  background-color: var(--first-color, #007bff); /* Fallback color */
+  transition: width 0.3s ease;
+}
+
+.tabButton.active {
+  color: var(--first-color, #007bff); /* Fallback color */
+}
+
+.tabButton.active::after {
+  width: 100%;
+}
+
+/* --- Skills Display --- */
+.skillsContainer {
+  width: 100%;
+  margin-top: 20px;
+  animation: slideInRight 0.5s ease-out forwards; /* Applied animation */
+}
+
+.skillList {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.skillItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 120px;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: #f9f9f9;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease,
+    background-color 0.3s ease;
+}
+
+.skillItem:hover {
+  transform: translateY(-5px) scale(1.05);
+  background-color: var(--first-color, #007bff);
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.5s ease;
+}
+
+.skillImage {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+  margin-bottom: 10px;
+}
+
+/* --- Dark Mode --- */
+body.dark-mode {
+  --background-primary: #121212;
+  --background-secondary: #1e1e1e;
+  --text-primary: #f0f0f0;
+  --text-secondary: #cccccc;
+  --accent-color: #faf03b;
+  --accent-hover: #fada5c;
+  --accent-text-dark: #000000;
+  --shadow-color: rgba(250, 240, 59, 0.15); /* Brighter shadow for dark mode */
+}
+
+body.dark-mode .mainContainer {
+  background-color: var(--background-primary);
+  color: var(--text-primary);
+}
+
+body.dark-mode .tabButton {
+  color: var(--text-secondary);
+}
+
+body.dark-mode .tabButton:hover,
+body.dark-mode .tabButton.active {
+  color: var(--accent-color);
+}
+
+body.dark-mode .tabButton::after {
+  background-color: var(--accent-color);
+}
+
+body.dark-mode .skillItem {
+  background-color: var(--background-secondary);
+  color: #a7ffe7;
+}
+
+body.dark-mode .skillItem:hover {
+  background-color: var(--accent-hover);
+  box-shadow: 0 6px 24px var(--shadow-color);
+  color: var(--accent-text-dark);
+}
+
+/* --- Responsive Media Queries --- */
+@media (max-width: 768px) {
+  .about-info {
+    max-width: 90vw;
+  }
+  .skillItem {
+    width: 100px;
+  }
+  .skillImage {
+    width: 50px;
+    height: 50px;
+  }
+}
+
+@media (max-width: 600px) {
+  .tabContainer {
+    gap: 20px;
+  }
+  .tabButton {
+    font-size: 16px;
+  }
+  .skillItem {
+    width: 90px;
+  }
+  .skillImage {
+    width: 45px;
+    height: 45px;
+  }
+}

@@ -1,0 +1,191 @@
+/* --- Optimized Font Import --- */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+/* =================================
+   VARIABLES
+   ================================= */
+:root {
+  --body-color: rgb(250, 250, 250);
+  --color-white: rgb(255, 255, 255);
+  --text-color-second: rgb(68, 68, 68);
+  --first-color: rgb(110, 87, 224);
+  --first-color-hover: rgb(40, 91, 212);
+  --second-color: rgb(110, 87, 224);
+  --fourth-color: rgb(183, 230, 174);
+  --first-shadow-color: rgba(0, 0, 0, 0.1);
+}
+
+/* =================================
+   BASE & GLOBAL STYLES
+   ================================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--body-color);
+}
+
+.form-control {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+  max-width: 700px;
+  margin: 0 auto;
+  background-color: #f4f6f8;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+@media screen and (max-width: 768px) {
+  #containerStyle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+.form-inputs {
+  display: flex;
+  gap: 10px;
+  width: 100%;
+}
+
+.input-field {
+  width: 100%; /* Default for larger screens, side-by-side */
+  height: 55px;
+  background: transparent;
+  border: 2px solid var(--first-color);
+  border-radius: 10px;
+  padding-inline: 20px;
+  outline: none;
+  font-size: 16px;
+  color: var(--text-color-second);
+}
+
+.input-field::placeholder {
+  color: #999;
+}
+
+/* This is for the "Brief topic" input */
+.input-subject {
+  width: 100%;
+}
+
+/* Target the textarea specifically within the form */
+textarea.input-field {
+  width: 100%;
+  height: 120px;
+  padding: 15px 20px;
+  resize: none;
+}
+
+.form-button > .btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  background: var(--second-color);
+  color: var(--color-white);
+  font-size: 16px;
+  font-weight: 500;
+  padding: 15px 20px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.form-button > .btn:hover {
+  background: var(--first-color-hover);
+}
+
+.form-button i {
+  font-size: 18px;
+  transform: rotate(-45deg);
+  margin-left: 10px;
+}
+
+/* =================================
+   POPUP NOTIFICATION
+   ================================= */
+.popup {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: white;
+  padding: 15px 30px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  font-weight: bold;
+  font-size: 16px;
+  user-select: none;
+  cursor: pointer;
+  animation: fadeIn 0.3s ease-out;
+}
+
+.popup--success {
+  background-color: #4bb543; /* Green */
+}
+
+.popup--error {
+  background-color: #ff5252; /* Red */
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    top: 0;
+  }
+  to {
+    opacity: 1;
+    top: 20px;
+  }
+}
+
+/* =================================
+   RESPONSIVE DESIGN
+   ================================= */
+
+/* --- Layout for Tablets & Large Phones --- */
+@media screen and (max-width: 768px) {
+  .form-control {
+    padding: 20px;
+  }
+
+  .form-inputs {
+    /* Stack the "Name" and "Email" fields vertically */
+    width: 100%;
+  }
+
+  .input-field {
+    /* Make all inputs full-width */
+    width: 100%;
+  }
+
+  textarea.input-field {
+    font-size: 15px;
+    height: 100px;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .form-control {
+    padding: 15px;
+  }
+
+  textarea.input-field {
+    font-size: 14px;
+    padding: 12px 15px; /* Adjust padding for smaller text */
+    height: 90px;
+  }
+}
