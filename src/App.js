@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
+import { Analytics } from "@vercel/analytics/react";
 import Header from './components/Header';
 import Home from './components/Home';
 import Contact from './components/Contact';
@@ -98,6 +99,7 @@ const App = () => {
 
         <Route path="*" element={<NotFound />} />
       </Routes>
+      <Analytics />
     </BrowserRouter>
   );
 };
