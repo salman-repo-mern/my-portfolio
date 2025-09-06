@@ -17,10 +17,16 @@
 /* --- Mobile Centering Fix --- */
 @media screen and (max-width: 768px) {
   .header {
-    width: 80%; 
-    margin-top: 10px; 
-    }
+    left: 0;           
+    translate: none;      
+    width: 90vw;         
+    border-radius: 0;     
+    margin:5px;
+    margin-left:15px;
+    border-radius: 20px;
+  }
 }
+
 .header__nav {
   display: flex;
   justify-content: space-between;
@@ -28,7 +34,7 @@
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 2rem;
+  padding: 0 1rem;
 }
 
 .header__logo {

@@ -78,7 +78,7 @@ const Header = ({isDarkMode, onToggleTheme, onNavigate}) => {
 
   const handleNavClick = path => {
     onNavigate(path)
-    closeMobileMenu() // <-- IMPROVEMENT: Close mobile menu on click
+    closeMobileMenu() 
   }
 
   return (
@@ -89,7 +89,7 @@ const Header = ({isDarkMode, onToggleTheme, onNavigate}) => {
           className="header__logo"
           onClick={e => {
             e.preventDefault()
-            handleNavClick('/') // <-- IMPROVEMENT: Logo scrolls to top
+            handleNavClick('/') 
           }}
         >
           &lt; Salman /&gt;
