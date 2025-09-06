@@ -1,11 +1,12 @@
-/* --- Base Header Styling --- */
+/* index.css */
+
 @import url('https://fonts.googleapis.com/css2?family=Lugrasimo&display=swap');
 
 .header {
   position: fixed;
   top: 0;
   left: 50%;
-  translate: -50%;
+  transform: translateX(-50%); /* Use transform for better performance than translate */
   width: 75%;
   z-index: 1000;
   transition: background-color 0.4s ease, height 0.4s ease, box-shadow 0.4s ease;
@@ -14,13 +15,7 @@
   border-radius: 25px;
   margin-top: 15px;
 }
-/* --- Mobile Centering Fix --- */
-@media screen and (max-width: 768px) {
-  .header {
-    width: 80%; 
-    margin-top: 10px; 
-    }
-}
+
 .header__nav {
   display: flex;
   justify-content: space-between;
@@ -38,11 +33,7 @@
   transition: color 0.3s ease;
   white-space: nowrap;
 }
-@media screen and (max-width: 768px) {
-  .header__logo {
-    font-size: 1.1rem;
-  }
-}
+
 /* --- Dynamic Sticky Header Effect --- */
 .header.scrolled {
   height: 65px;
@@ -159,24 +150,17 @@ body.dark-mode .header__toggle {
 
 /* --- Mobile Responsiveness --- */
 @media screen and (max-width: 992px) {
+  /* Rules for tablets and smaller */
   .header__list {
     gap: 1rem;
   }
   .header__buttons_desktop {
-    margin-left: 1rem;
-  }
-}
-
-@media screen and (max-width: 992px) {
-  .header__buttons_desktop {
     display: none;
   }
-
   .header__toggle {
     display: block;
     z-index: 1001; /* Ensure it's above the menu */
   }
-
   .header__menu {
     position: fixed;
     top: 0;
@@ -189,11 +173,9 @@ body.dark-mode .header__toggle {
     gap: 2rem;
     transition: right 0.4s ease-in-out;
   }
-
   .header__menu.active {
     right: 0; /* Slide in */
   }
-
   body.light-mode .header__menu {
     background-color: rgba(255, 255, 255, 0.95);
     backdrop-filter: blur(10px);
@@ -204,17 +186,14 @@ body.dark-mode .header__toggle {
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
   }
-
   .header__list {
     flex-direction: column;
     text-align: center;
     gap: 2rem;
   }
-
   .header__link {
     font-size: 1rem;
   }
-
   .header__buttons_mobile {
     display: flex;
     gap: 1rem;
@@ -222,15 +201,13 @@ body.dark-mode .header__toggle {
   }
 }
 
-/* --- Add this to your index.css file --- */
-
-/* Style for the active navigation link */
-.header__link.active {
-  /* Use your theme's primary color */
-  color: var(--first-color);
-}
-
-/* Make the underline effect appear for the active link */
-.header__link.active::after {
-  width: 100%;
+@media screen and (max-width: 768px) {
+  /* Rules for mobile phones */
+  .header {
+    width: 80%;
+    margin-top: 10px;
+  }
+  .header__logo {
+    font-size: 1.1rem;
+  }
 }
