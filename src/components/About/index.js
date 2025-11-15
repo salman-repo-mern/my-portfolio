@@ -1,138 +1,120 @@
-import {useState} from 'react'
 import './index.css'
 
 const skills = [
   {
-    title: 'Frontend',
     skills: [
       {
         name: 'React Js',
         image:
-          'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9Ii0xMS41IC0xMC4yMzE3NCAyMyAyMC40NjM0OCI+CiAgPHRpdGxlPlJlYWN0IExvZ288L3RpdGxlPgogIDxjaXJjbGUgY3g9IjAiIGN5PSIwIiByPSIyLjA1IiBmaWxsPSIjNjFkYWZiIi8+CiAgPGcgc3Ryb2tlPSIjNjFkYWZiIiBzdHJva2Utd2lkdGg9IjEiIGZpbGw9Im5vbmUiPgogICAgPGVsbGlwc2Ugcng9IjExIiByeT0iNC4yIi8+CiAgICA8ZWxsaXBzZSByeD0iMTEiIHJ5PSI0LjIiIHRyYW5zZm9ybT0icm90YXRlKDYwKSIvPgogICAgPGVsbGlwc2Ugcng9IjExIiByeT0iNC4yIiB0cmFuc2Zvcm09InJvdGF0ZSgxMjApIi8+CiAgPC9nPgo8L3N2Zz4K',
+          '/reactjs.png',
       },
       {
         name: 'HTML',
-        image: 'https://www.w3.org/html/logo/badge/html5-badge-h-solo.png',
+        image: '/html.png',
       },
       {
         name: 'CSS',
         image:
-          'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/CSS3_logo_and_wordmark.svg/1452px-CSS3_logo_and_wordmark.svg.png',
+          '/css.png',
       },
       {
         name: 'JavaScript',
         image:
-          'https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/JavaScript-logo.png/800px-JavaScript-logo.png',
+          '/javascript.png',
       },
       {
         name: 'Bootstrap',
         image:
-          'https://getbootstrap.com/docs/5.3/assets/brand/bootstrap-logo-shadow.png',
+          '/bootstrap.png',
       },
-    ],
-  },
-  {
-    title: 'Backend',
-    skills: [
       {
         name: 'Node Js',
-        image: 'https://nodejs.org/static/images/logo.svg',
+        image: '/nodejs.png',
       },
       {
         name: 'Express Js',
         image:
-          'https://cdn.groovetechnology.com/wp-content/uploads/2023/08/expressjs.png',
+          '/expressjs.png',
       },
       {
         name: 'Python',
         image:
-          'https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg',
+          '/python.png',
       },
       {
-        name: 'MySQL',
+        name: 'SQL',
         image:
-          'https://raw.githubusercontent.com/devicons/devicon/master/icons/mysql/mysql-original-wordmark.svg',
+          '/sql.png',
       },
       {
         name: 'MongoDB',
         image:
-          'https://raw.githubusercontent.com/devicons/devicon/master/icons/mongodb/mongodb-original-wordmark.svg',
+          '/mongo.png',
       },
-    ],
-  },
-  {
-    title: 'Others',
-    skills: [
       {
         name: 'Git',
         image:
-          'https://upload.wikimedia.org/wikipedia/commons/3/3f/Git_icon.svg',
+          '/git.png',
       },
       {
         name: 'GitHub',
         image:
-          'https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png',
+          '/github.png',
       },
       {
         name: 'VS Code',
         image:
-          'https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Visual_Studio_Code_1.35_icon.svg/512px-Visual_Studio_Code_1.35_icon.svg.png?20210804221519',
+          '/vscode.png',
       },
       {
         name: 'Vercel',
         image:
-          'https://res.cloudinary.com/dusyxcqt9/image/upload/v1754915464/vl_mxxjwe.png',
+          '/vercel.png',
       },
       {
         name: 'Netlify',
         image:
-          'https://upload.wikimedia.org/wikipedia/commons/9/97/Netlify_logo_%282%29.svg',
+          '/netlify.png',
       },
       {
         name: 'Render',
         image:
-          'https://res.cloudinary.com/dusyxcqt9/image/upload/v1754915647/render_sqdr3p.png',
+          'render.png',
       },
-    ],
-  },
+    ]
+  }
 ]
 
-const About = () => {
-  const [selectedCategory, setSelectedCategory] = useState('Frontend')
-
-  const selectedSkills = skills.find(skill => skill.title === selectedCategory)
+export default function About() {
+  const allSkills = skills.flatMap(section => section.skills)
 
   return (
     <div className="mainContainer" id="about-container-main">
-      <div className="about-info">
-        <h3>My introduction</h3>
-        <p>
-          I'm a passionate Full Stack Web Developer with a strong foundation in
-          both front-end and back-end technologies. I love building responsive,
-          scalable, and user-friendly web applications.
-        </p>
+      <div className="about-top">
+        <div className="about-left">
+          <h3>My Journey</h3>
+          <p>
+            I started my coding journey with a strong curiosity towards building
+            real-world applications. Over time, I transitioned into MERN stack
+            development, learning how to design scalable systems, clean UI, and
+            efficient backend logic. I enjoy building things that make an impact.
+          </p>
+        </div>
+        <div className="about-right">
+          <h3>My Competitive Coding</h3>
+          <ul className="about-achievements">
+            <li>✔️ Solved 100+ coding problems</li>
+            <li>✔️ Strong fundamentals in DSA</li>
+            <li>✔️ Practicing Algorithms daily</li>
+          </ul>
+        </div>
       </div>
-
-      <div className="tabContainer">
-        {skills.map(skill => (
-          <button
-            key={skill.title}
-            type="button"
-            className={`tabButton ${
-              selectedCategory === skill.title ? 'active' : ''
-            }`}
-            onClick={() => setSelectedCategory(skill.title)}
-          >
-            {skill.title}
-          </button>
-        ))}
-      </div>
-
-      <div className="skillsContainer">
-        <div className="skillList">
-          {selectedSkills.skills.map(item => (
-            <div className="skillItem" key={item.id}>
-              <img src={item.image} className="skillImage" alt={item.name} />
+      <div className="skillsSlider">
+        <h2>I am Familiar with the below technologies</h2>
+        <div className="sliderTrack">
+          {allSkills.concat(allSkills).map((item, index) => (
+            <div className="slide" key={index}>
+              <img src={item.image} alt={item.name} className="slideImage" />
               <p>{item.name}</p>
             </div>
           ))}
@@ -141,5 +123,3 @@ const About = () => {
     </div>
   )
 }
-
-export default About

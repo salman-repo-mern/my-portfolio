@@ -1,187 +1,262 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap');
 /* --- Animations --- */
 @keyframes slideInRight {
   from {
-    opacity: 0;
-    transform: translateX(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
+  opacity: 0;
+   transform: translateX(30px);
+}
+ to {
+ opacity: 1;
+ transform: translateX(0);
+ }
+}
+
+/* Base Animation (Used for non-mobile devices where 50% is generally accurate) */
+@keyframes slideLeft {
+ 0% { transform: translateX(0); }
+ 100% { transform: translateX(-50%); }
+}
+
+@keyframes fadeUp {
+ from {
+ opacity: 0;
+ transform: translateY(25px);
+ }
+ to {
+ opacity: 1;
+ transform: translateY(0);
+ }
 }
 
 /* --- Main Layout --- */
 .mainContainer {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin-top: 10vh;
-  padding: 20px;
+ display: flex;
+ flex-direction: column;
+ justify-content: center;
+ align-items: center;
+ margin-top: 10vh;
+ padding: 20px;
 }
 
-.about-info {
-  max-width: 75vw;
-  margin-bottom: 20px;
-  text-align: center;
+/* --- Auto Sliding Skills --- */
+.skillsSlider {
+ width: 100%;
+ overflow: hidden;
+ margin-top: 30px;
+ padding: 20px 0;
+ animation: slideInRight 0.5s ease-out forwards;
+}
+.skillsSlider h2{
+ text-align: center;
+ font-weight: 700;
+ font-family: "Dancing Script", cursive;
+ font-optical-sizing: auto;
+ font-style: normal;
+ margin-bottom: 10px;
+ font-size: 30px;
 }
 
-.about-info p {
-  font-size: 1rem;
-  line-height: 1.6;
+.sliderTrack {
+ display: flex;
+ gap: 40px;
+ white-space: nowrap;
+ flex-wrap: nowrap; 
+ /* Default speed for larger screens */
+ animation: slideLeft 10s linear infinite; 
 }
 
-/* --- Tabs --- */
-.tabContainer {
-  display: flex;
-  gap: 30px;
-  justify-content: center;
-  margin-bottom: 2rem;
+/* --- Skill Card --- */
+.slide {
+ width: 170px; 
+ min-width: 170px; 
+ height: 170px;
+ padding: 20px;
+ background: #ffffff;
+ border-radius: 15px;
+ border: 1px solid #e4e4e4;
+ box-shadow: 0 4px 18px rgba(0, 0, 0, 0.08);
+ transition: transform 0.3s, box-shadow 0.3s;
+ 
+ display: flex;
+ flex-direction: column;
+ align-items: center;
+ justify-content: center;
 }
 
-.tabButton {
-  background: none;
-  border: none;
-  font-size: 18px;
-  font-weight: 500;
-  color: var(--text-color-second, #555); /* Fallback color */
-  cursor: pointer;
-  position: relative;
-  padding-bottom: 4px;
-  transition: color 0.3s ease;
+.slide:hover {
+ transform: scale(1.08);
+ box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
 }
 
-.tabButton:hover {
-  color: var(--first-color, #007bff); /* Fallback color */
+.slideImage {
+ width: 80px;
+ height: 80px;
+ object-fit: contain;
+ margin-bottom: 12px;
 }
 
-.tabButton::after {
-  content: '';
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  width: 0%;
-  height: 2px;
-  background-color: var(--first-color, #007bff); /* Fallback color */
-  transition: width 0.3s ease;
+.slide p {
+ font-size: 1rem;
+ font-weight: 600;
+ margin: 0;
+ color: #333;
 }
 
-.tabButton.active {
-  color: var(--first-color, #007bff); /* Fallback color */
+/* --- About Section Left & Right Layout --- */
+.about-top {
+ width: 100%;
+ max-width: 1100px;
+ display: flex;
+ justify-content: space-between;
+ gap: 40px;
+ padding: 20px;
+ flex-wrap: wrap;
 }
 
-.tabButton.active::after {
-  width: 100%;
+.about-left,
+.about-right {
+ flex: 1;
+ min-width: 280px;
+}
+.about-left h3,
+.about-right h3 {
+ font-size: 1.4rem;
+ margin-bottom: 10px;
+ text-align: center;
+ 
 }
 
-/* --- Skills Display --- */
-.skillsContainer {
-  width: 100%;
-  margin-top: 20px;
-  animation: slideInRight 0.5s ease-out forwards; /* Applied animation */
+.about-left p {
+ font-size: 1rem;
+ line-height: 1.6;
 }
 
-.skillList {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 20px;
+/* Achievements List - Card styling */
+.about-achievements {
+ list-style: none;
+ padding: 0;
+ margin: 0;
 }
 
-.skillItem {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 120px;
-  padding: 10px;
-  border-radius: 10px;
-  background-color: #f9f9f9;
-  cursor: pointer;
-  transition: transform 0.3s ease, box-shadow 0.3s ease,
-    background-color 0.3s ease;
+.about-achievements li {
+ background: #ffffff;
+ padding: 10px 12px;
+ margin: 12px 0;
+ border-radius: 12px;
+ border: 1px solid #e4e4e4;
+ box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+ font-size: 1rem;
+ font-weight: 500;
+ color: #333;
+ opacity: 0;
+ transform: translateY(20px);
+ animation: fadeUp 0.6s ease forwards;
+ transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.skillItem:hover {
-  transform: translateY(-5px) scale(1.05);
-  background-color: var(--first-color, #007bff);
-  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.1);
-  transition: background-color 0.5s ease;
+.about-achievements li:nth-child(1) {
+ animation-delay: 0.1s;
+}
+.about-achievements li:nth-child(2) {
+ animation-delay: 0.25s;
+}
+.about-achievements li:nth-child(3) {
+ animation-delay: 0.4s;
 }
 
-.skillImage {
-  width: 60px;
-  height: 60px;
-  object-fit: contain;
-  margin-bottom: 10px;
+.about-achievements li:hover {
+ transform: translateY(-6px) scale(1.02);
+ box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+ cursor: pointer;
 }
 
 /* --- Dark Mode --- */
-body.dark-mode {
-  --background-primary: #121212;
-  --background-secondary: #1e1e1e;
-  --text-primary: #f0f0f0;
-  --text-secondary: #cccccc;
-  --accent-color: #faf03b;
-  --accent-hover: #fada5c;
-  --accent-text-dark: #000000;
-  --shadow-color: rgba(250, 240, 59, 0.15); /* Brighter shadow for dark mode */
+body.dark-mode .slide {
+ background: #aaaaaa;
+ border: 1px solid #333;
+ box-shadow: 0 4px 18px rgba(255, 255, 255, 0.05);
 }
 
-body.dark-mode .mainContainer {
-  background-color: var(--background-primary);
-  color: var(--text-primary);
+body.dark-mode .slide p {
+ color: #f7ff0b;
 }
 
-body.dark-mode .tabButton {
-  color: var(--text-secondary);
+body.dark-mode .slideImage {
+ filter: brightness(0.9);
 }
 
-body.dark-mode .tabButton:hover,
-body.dark-mode .tabButton.active {
-  color: var(--accent-color);
+body.dark-mode .slide:hover {
+ background: #aca3a3;
+ box-shadow: 0 8px 24px rgba(255, 255, 255, 0.08);
 }
 
-body.dark-mode .tabButton::after {
-  background-color: var(--accent-color);
+body.dark-mode .about-left p,
+body.dark-mode .about-right h3,
+body.dark-mode .about-achievements li {
+ color: #f0f0f0;
 }
 
-body.dark-mode .skillItem {
-  background-color: var(--background-secondary);
-  color: #a7ffe7;
+/* Dark Mode Achievements Cards */
+body.dark-mode .about-achievements li {
+ background: #1c1c1c;
+ color: #ffe600;
+ border: 1px solid #333;
+ box-shadow: 0 4px 12px rgba(255,255,255,0.04);
 }
 
-body.dark-mode .skillItem:hover {
-  background-color: var(--accent-hover);
-  box-shadow: 0 6px 24px var(--shadow-color);
-  color: var(--accent-text-dark);
+body.dark-mode .about-achievements li:hover {
+ box-shadow: 0 6px 18px rgba(255,255,255,0.08);
+ cursor: pointer;
 }
 
-/* --- Responsive Media Queries --- */
+/* --- Responsive Fixes & Speed Adjustments --- */
+
+/* Tablet speed (768px and below) */
 @media (max-width: 768px) {
-  .about-info {
-    max-width: 90vw;
-  }
-  .skillItem {
-    width: 100px;
-  }
-  .skillImage {
-    width: 50px;
-    height: 50px;
-  }
+ .sliderTrack {
+ animation: slideLeft 7s linear infinite; 
+ }
+
+ .slide {
+ width: 140px;
+ min-width: 140px; 
+ height: 150px;
+ }
+
+ .slideImage {
+ width: 65px;
+ height: 65px;
+ }
 }
 
 @media (max-width: 600px) {
-  .tabContainer {
-    gap: 20px;
-  }
-  .tabButton {
-    font-size: 16px;
-  }
-  .skillItem {
-    width: 90px;
-  }
-  .skillImage {
-    width: 45px;
-    height: 45px;
-  }
+ .sliderTrack {
+ gap: 20px;
+ /* Using the custom, faster animation */
+ animation: slideLeftMobile 8s linear infinite; 
+ flex-wrap: nowrap;
+ white-space: nowrap;
+ }
+
+ .slide {
+ width: 100px;
+ min-width: 100px; 
+ height: 120px;
+ }
+
+ .slideImage {
+ width: 55px;
+ height: 55px;
+ }
+ 
+ @keyframes slideLeftMobile {
+ 0% { transform: translateX(0); }
+ 100% { transform: translateX(calc(-12 * (100px + 20px))); }
+ }
+}
+
+@media (max-width: 500px) {
+ .sliderTrack {
+ animation: slideLeftMobile 9s linear infinite; 
+ }
 }
