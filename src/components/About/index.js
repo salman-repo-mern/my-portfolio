@@ -4,28 +4,24 @@ const skills = [
   {
     skills: [
       {
-        name: 'React Js',
-        image:
-          '/reactjs.png',
-      },
-      {
         name: 'HTML',
         image: '/html.png',
       },
       {
         name: 'CSS',
-        image:
-          '/css.png',
+        image: '/css.png',
       },
       {
         name: 'JavaScript',
-        image:
-          '/javascript.png',
+        image: '/javascript.png',
       },
       {
         name: 'Bootstrap',
-        image:
-          '/bootstrap.png',
+        image: '/bootstrap.png',
+      },
+      {
+        name: 'React Js',
+        image: '/reactjs.png',
       },
       {
         name: 'Node Js',
@@ -33,56 +29,46 @@ const skills = [
       },
       {
         name: 'Express Js',
-        image:
-          '/expressjs.png',
+        image: '/expressjs.png',
       },
       {
         name: 'Python',
-        image:
-          '/python.png',
+        image: '/python.png',
       },
       {
         name: 'SQL',
-        image:
-          '/sql.png',
+        image: '/sql.png',
       },
       {
         name: 'MongoDB',
-        image:
-          '/mongo.png',
+        image: '/mongo.png',
       },
       {
         name: 'Git',
-        image:
-          '/git.png',
+        image: '/git.png',
       },
       {
         name: 'GitHub',
-        image:
-          '/github.png',
+        image: '/github.png',
       },
       {
         name: 'VS Code',
-        image:
-          '/vscode.png',
+        image: '/vscode.png',
       },
       {
         name: 'Vercel',
-        image:
-          '/vercel.png',
+        image: '/vercel.png',
       },
       {
         name: 'Netlify',
-        image:
-          '/netlify.png',
+        image: '/netlify.png',
       },
       {
         name: 'Render',
-        image:
-          'render.png',
+        image: 'render.png',
       },
-    ]
-  }
+    ],
+  },
 ]
 
 export default function About() {
@@ -97,23 +83,25 @@ export default function About() {
             I started my coding journey with a strong curiosity towards building
             real-world applications. Over time, I transitioned into MERN stack
             development, learning how to design scalable systems, clean UI, and
-            efficient backend logic. I enjoy building things that make an impact.
+            efficient backend logic. I enjoy building things that make an
+            impact.
           </p>
         </div>
         <div className="about-right">
-          <h3>My Competitive Coding</h3>
+          <h3>
+            <span className="coding-name"> My Competitive Coding</span>
+          </h3>
           <ul className="about-achievements">
             <li>✔️ Solved 100+ coding problems</li>
             <li>✔️ Strong fundamentals in DSA</li>
-            <li>✔️ Practicing Algorithms daily</li>
           </ul>
         </div>
       </div>
       <div className="skillsSlider">
         <h2>I am Familiar with the below technologies</h2>
         <div className="sliderTrack">
-          {allSkills.concat(allSkills).map((item, index) => (
-            <div className="slide" key={index}>
+          {allSkills.concat(allSkills).map(item => (
+            <div className="slide" key={item.name}>
               <img src={item.image} alt={item.name} className="slideImage" />
               <p>{item.name}</p>
             </div>

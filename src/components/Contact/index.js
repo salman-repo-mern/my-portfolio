@@ -1,10 +1,9 @@
-import {useState, useRef} from 'react'
+import { useState, useRef } from 'react'
 import emailjs from '@emailjs/browser'
-import {LuSend} from 'react-icons/lu'
+import { LuSend } from 'react-icons/lu'
 import './index.css'
 
-// A small, reusable Popup component
-const Popup = ({message, type, onDismiss}) => (
+const Popup = ({ message, type, onDismiss }) => (
   <div
     role="button"
     tabIndex={0}
@@ -32,22 +31,19 @@ const Contact = () => {
     type: '',
   })
 
-  // A single handler for all form inputs
   const handleChange = e => {
-    const {name, value} = e.target
-    setFormData(prev => ({...prev, [name]: value}))
+    const { name, value } = e.target
+    setFormData(prev => ({ ...prev, [name]: value }))
   }
 
-  // Helper function to show and auto-hide the popup
   const triggerPopup = (message, type) => {
-    setPopup({show: true, message, type})
-    setTimeout(() => setPopup(prev => ({...prev, show: false})), 3000)
+    setPopup({ show: true, message, type })
+    setTimeout(() => setPopup(prev => ({ ...prev, show: false })), 3000)
   }
 
   const sendMail = e => {
-    e.preventDefault() // Prevent default form submission (page reload)
+    e.preventDefault()
 
-    // Check if any field is empty
     if (Object.values(formData).some(value => value.trim() === '')) {
       triggerPopup('❌ Please fill all fields before sending.', 'error')
       return
@@ -57,13 +53,13 @@ const Contact = () => {
       .sendForm(
         'service_fzv2k6k',
         'template_njz0h7f',
-        form.current, // Use the form ref
+        form.current,
         'jy-WhRgVzEH6j_6Hr',
       )
       .then(
         () => {
           triggerPopup('✅ Message sent successfully!', 'success')
-          setFormData({name: '', email: '', subject: '', message: ''}) // Clear form
+          setFormData({ name: '', email: '', subject: '', message: '' })
         },
         error => {
           console.error('FAILED...', error)
@@ -75,12 +71,12 @@ const Contact = () => {
   return (
     <section className="section education-container mb-5" id="contact-section">
       <div className="top-header">
-        <h1>Let’s Work Together</h1>
+        <h1 id="main-heading-name">Let’s Work Together</h1>
         <span>Got an idea or project in mind? I’d love to hear about it!</span>
       </div>
 
       <div className="row" id="containerStyle">
-        <div className="col" style={{marginBottom: '40px'}}>
+        <div className="col" style={{ marginBottom: '40px' }}>
           {/* Use a proper <form> element with onSubmit */}
           <form
             ref={form}
@@ -132,7 +128,7 @@ const Contact = () => {
             <div className="form-button">
               {/* Change button type to "submit" */}
               <button className="btn" type="submit">
-                Send <LuSend style={{marginLeft: '8px'}} />
+                Send <LuSend style={{ marginLeft: '8px' }} />
               </button>
             </div>
           </form>
@@ -143,7 +139,7 @@ const Contact = () => {
         <Popup
           message={popup.message}
           type={popup.type}
-          onDismiss={() => setPopup(prev => ({...prev, show: false}))}
+          onDismiss={() => setPopup(prev => ({ ...prev, show: false }))}
         />
       )}
     </section>

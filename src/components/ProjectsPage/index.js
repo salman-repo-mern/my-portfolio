@@ -1,4 +1,4 @@
-import {RiExternalLinkFill} from 'react-icons/ri'
+import { RiExternalLinkFill } from 'react-icons/ri'
 import './index.css'
 
 const projectsData = [
