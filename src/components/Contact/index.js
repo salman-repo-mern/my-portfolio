@@ -126,7 +126,6 @@ const Contact = () => {
               />
             </div>
             <div className="form-button">
-              {/* Change button type to "submit" */}
               <button className="btn" type="submit">
                 Send <LuSend style={{ marginLeft: '8px' }} />
               </button>

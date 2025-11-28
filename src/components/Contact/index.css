@@ -174,7 +174,7 @@ textarea.input-field {
 }
 
 #main-heading-name {
-  background: linear-gradient(90deg, #a71919 0%, #fae30e 40%, orange 100%);
+  background: linear-gradient(124deg, #ff0000 0%, #000ed3 100% );
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   margin-bottom: 15px;

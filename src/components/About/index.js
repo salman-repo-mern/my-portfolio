@@ -67,6 +67,10 @@ const skills = [
         name: 'Render',
         image: 'render.png',
       },
+      {
+        name: 'AI Foundation Course',
+        image: 'jio.jpg',
+      },
     ],
   },
 ]
