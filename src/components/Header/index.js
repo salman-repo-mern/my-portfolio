@@ -1,14 +1,14 @@
-import {useState, useEffect} from 'react'
-import {FaBars, FaTimes} from 'react-icons/fa'
-import {AiOutlineEye} from 'react-icons/ai'
+import { useState, useEffect } from 'react'
+import { FaBars, FaTimes } from 'react-icons/fa'
+import { AiOutlineEye } from 'react-icons/ai'
 import './index.css'
 
 const navLinks = [
-  {path: '/', label: 'Home'},
-  {path: '/education', label: 'Education'},
-  {path: '/about', label: 'About'},
-  {path: '/projects', label: 'Projects'},
-  {path: '/contact', label: 'Contact'},
+  { path: '/', label: 'Home' },
+  { path: '/education', label: 'Education' },
+  { path: '/about', label: 'About' },
+  { path: '/projects', label: 'Projects' },
+  { path: '/contact', label: 'Contact' },
 ]
 
 const onDownloadResume = () => {
@@ -19,7 +19,7 @@ const onDownloadResume = () => {
   )
 }
 
-const Header = ({isDarkMode, onToggleTheme, onNavigate}) => {
+const Header = ({ isDarkMode, onToggleTheme, onNavigate }) => {
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [isScrolled, setScrolled] = useState(false)
   const [activeSection, setActiveSection] = useState('')
@@ -37,7 +37,7 @@ const Header = ({isDarkMode, onToggleTheme, onNavigate}) => {
 
   // --- NEW: Effect for Active Link Highlighting ---
   useEffect(() => {
-    const sections = navLinks.map(({path}) =>
+    const sections = navLinks.map(({ path }) =>
       document.getElementById(path === '/' ? 'home' : path.substring(1)),
     )
 
@@ -78,7 +78,7 @@ const Header = ({isDarkMode, onToggleTheme, onNavigate}) => {
 
   const handleNavClick = path => {
     onNavigate(path)
-    closeMobileMenu() 
+    closeMobileMenu()
   }
 
   return (
@@ -89,7 +89,7 @@ const Header = ({isDarkMode, onToggleTheme, onNavigate}) => {
           className="header__logo"
           onClick={e => {
             e.preventDefault()
-            handleNavClick('/') 
+            handleNavClick('/')
           }}
         >
           &lt; Salman /&gt;
@@ -97,13 +97,12 @@ const Header = ({isDarkMode, onToggleTheme, onNavigate}) => {
 
         <div className={`header__menu ${isMobileMenuOpen ? 'active' : ''}`}>
           <ul className="header__list">
-            {navLinks.map(({path, label}) => (
+            {navLinks.map(({ path, label }) => (
               <li key={path}>
                 <a
                   href={`#${path === '/' ? 'home' : path.substring(1)}`}
-                  className={`header__link ${
-                    activeSection === path ? 'active' : ''
-                  }`}
+                  className={`header__link ${activeSection === path ? 'active' : ''
+                    }`}
                   onClick={e => {
                     e.preventDefault()
                     handleNavClick(path)

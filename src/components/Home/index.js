@@ -1,17 +1,17 @@
-import {useState, useEffect, useRef} from 'react'
-import {FaFileAlt, FaEye} from 'react-icons/fa'
-import {Mail, Linkedin, Github} from 'lucide-react'
+import { useState, useEffect, useRef } from 'react'
+import { FaFileAlt, FaEye } from 'react-icons/fa'
+import { Mail, Linkedin, Github } from 'lucide-react'
 import './index.css' // Your existing CSS file
 
 // --- Reusable SocialLink Component ---
-const SocialLink = ({href, label, icon: Icon, color}) => (
+const SocialLink = ({ href, label, icon: Icon, color }) => (
   <a
     href={href}
     target="_blank"
     rel="noopener noreferrer"
     className="social-icon"
     aria-label={`Visit my ${label}`}
-    style={{'--icon-color': color}}
+    style={{ '--icon-color': color }}
   >
     <Icon size={24} />
   </a>
@@ -61,10 +61,8 @@ const Home = () => {
       timeoutId.current = setTimeout(handleTyping, typeSpeed)
     }
 
-    // Start the effect
     timeoutId.current = setTimeout(handleTyping, 500)
 
-    // Cleanup function to prevent memory leaks
     return () => clearTimeout(timeoutId.current)
   }, [roles]) // Dependency array ensures this runs only once
 
@@ -78,7 +76,7 @@ const Home = () => {
 
   const onCheckResume = () => {
     window.open(
-      'https://drive.google.com/file/d/1w5tfBf4NuIUPdpHDSyD6FO_vMePmcBlx/view?usp=sharing',
+      'https://drive.google.com/file/d/1UxiQrDfhM5tHLgW1A438fguNGKNZQF_L/view?usp=drive_link',
       '_blank',
       'noreferrer',
     )
@@ -89,7 +87,7 @@ const Home = () => {
       <div className="featured-box">
         <div className="featured-text">
           <div className="featured-text-card">
-            <h1 className="heading-name" style={{fontWeight: 600}}>
+            <h1 className="heading-name" style={{ fontWeight: 600 }}>
               Hello, this is{' '}
               <span
                 className="special-name"
