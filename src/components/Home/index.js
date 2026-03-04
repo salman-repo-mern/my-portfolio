@@ -68,7 +68,7 @@ const Home = () => {
 
   const onHireMe = () => {
     window.open(
-      'https://www.linkedin.com/in/salman-sa786472',
+      'https://www.linkedin.com/in/shaiksalman2',
       '_blank',
       'noreferrer',
     )
@@ -76,7 +76,7 @@ const Home = () => {
 
   const onCheckResume = () => {
     window.open(
-      'https://drive.google.com/file/d/1UxiQrDfhM5tHLgW1A438fguNGKNZQF_L/view?usp=drive_link',
+      'https://drive.google.com/file/d/1ujIgN06pdL8U0nolSdfj9njQqBQJI7Wl/view?usp=sharing',
       '_blank',
       'noreferrer',
     )
