@@ -1,28 +1,248 @@
-.vertical-timeline-element-subtitle {
-  margin-top: 10px;
-  color: blueviolet;
-  font-size: 18px;
-}
 #education-container {
-  margin-bottom: 30px;
+  padding: 40px 20px;
+  position: relative;
+  overflow: hidden;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
-@media (max-width: 785px) {
-  #education-container {
-    margin-bottom: 20px;
-  }
+/* Header Styling */
+.education-header {
+  text-align: center;
+  margin-bottom: 50px;
 }
 
+.section-title {
+  font-size: 2.8rem;
+  font-weight: 800;
+  margin-bottom: 15px;
+  letter-spacing: 1px;
+}
+
+.section-subtitle {
+  font-size: 1.1rem;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+
+/* Light / Dark Header Styles */
+body:not(.dark-mode) .section-title,
+.light-mode .section-title {
+  color: var(--text-main);
+}
+
+body:not(.dark-mode) .highlight-text,
+.light-mode .highlight-text {
+  background: var(--accent-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+body:not(.dark-mode) .section-subtitle,
+.light-mode .section-subtitle {
+  color: var(--text-muted);
+}
+
+body.dark-mode .section-title,
+.dark-mode .section-title {
+  color: var(--text-main);
+}
+
+body.dark-mode .highlight-text,
+.dark-mode .highlight-text {
+  background: var(--accent-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 15px rgba(96, 165, 250, 0.4);
+}
+
+body.dark-mode .section-subtitle,
+.dark-mode .section-subtitle {
+  color: var(--text-muted);
+}
+
+/* Base styles for timeline elements */
+.vertical-timeline-element-content {
+  border-radius: 16px !important;
+  box-shadow: 0 10px 30px -15px rgba(0, 0, 0, 0.1) !important;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.vertical-timeline-element-content:hover {
+  transform: translateY(-8px) scale(1.02);
+}
+
+/* Title text enhancements */
+.vertical-timeline-element-title {
+  font-size: 1.5rem !important;
+  font-weight: 700 !important;
+  margin-bottom: 8px !important;
+  letter-spacing: 0.5px;
+  line-height: 1.3;
+}
+
+/* Subtitle text enhancements */
 .vertical-timeline-element-subtitle {
-  margin-top: 10px;
-  font-size: 18px;
-  color: #673ab7;
+  font-size: 1.1rem !important;
+  font-weight: 600 !important;
+  margin-top: 5px !important;
+  margin-bottom: 12px !important;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
-body.dark-mode .vertical-timeline-element-subtitle {
-  color: #00ffff;
+/* Description paragraph */
+.vertical-timeline-element-content p {
+  font-size: 1rem !important;
+  line-height: 1.6 !important;
+  font-weight: 400 !important;
+  margin-top: 15px !important;
+  margin-bottom: 0 !important;
 }
 
+/* Date text enhancements */
+.vertical-timeline-element-date {
+  font-size: 1rem !important;
+  font-weight: 700 !important;
+  opacity: 0.9 !important;
+  padding: 8px 16px !important;
+  letter-spacing: 0.5px;
+}
+
+/* Light mode specifics */
+body:not(.dark-mode) .vertical-timeline-element-content,
+.light-mode .vertical-timeline-element-content {
+  background: var(--card-bg) !important;
+  border: 1px solid var(--border-color) !important;
+}
+
+body:not(.dark-mode) .vertical-timeline-element-content:hover,
+.light-mode .vertical-timeline-element-content:hover {
+  box-shadow: 0 20px 40px -15px rgba(59, 130, 246, 0.2) !important;
+}
+
+body:not(.dark-mode) .vertical-timeline-element-title,
+.light-mode .vertical-timeline-element-title {
+  background: var(--accent-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+body:not(.dark-mode) .vertical-timeline-element-subtitle,
+.light-mode .vertical-timeline-element-subtitle {
+  color: var(--text-muted) !important;
+}
+
+body:not(.dark-mode) .vertical-timeline-element-content p,
+.light-mode .vertical-timeline-element-content p {
+  color: var(--text-main) !important;
+}
+
+body:not(.dark-mode) .vertical-timeline-element-date,
+.light-mode .vertical-timeline-element-date {
+  color: var(--text-main) !important;
+}
+
+/* Dark mode specifics */
+body.dark-mode .vertical-timeline-element-content,
+.dark-mode .vertical-timeline-element-content {
+  background: var(--card-bg) !important;
+  border: 1px solid var(--border-color) !important;
+}
+
+body.dark-mode .vertical-timeline-element-content:hover,
+.dark-mode .vertical-timeline-element-content:hover {
+  border-color: rgba(96, 165, 250, 0.5) !important;
+  box-shadow: 0 15px 35px -5px rgba(96, 165, 250, 0.2) !important;
+}
+
+body.dark-mode .vertical-timeline-element-title,
+.dark-mode .vertical-timeline-element-title {
+  background: var(--accent-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 10px rgba(96, 165, 250, 0.3);
+}
+
+body.dark-mode .vertical-timeline-element-subtitle,
+.dark-mode .vertical-timeline-element-subtitle {
+  color: var(--text-muted) !important;
+}
+
+body.dark-mode .vertical-timeline-element-content p,
+.dark-mode .vertical-timeline-element-content p {
+  color: #cccccc !important;
+}
+
+body.dark-mode .vertical-timeline-element-date,
+.dark-mode .vertical-timeline-element-date {
+  color: var(--text-main) !important;
+}
+
+/* Timeline line */
 .vertical-timeline::before {
-  background: #5b5858;
+  background: var(--accent-gradient) !important;
+  width: 4px !important;
+  box-shadow: 0 0 15px rgba(96, 165, 250, 0.4);
+}
+
+body:not(.dark-mode) .vertical-timeline::before,
+.light-mode .vertical-timeline::before {
+  background: var(--accent-gradient) !important;
+  box-shadow: none;
+}
+
+/* Icons box shadows and transitions */
+.vertical-timeline-element-icon {
+  box-shadow: 0 0 0 4px var(--bg-color), inset 0 2px 0 rgba(0, 0, 0, .08), 0 3px 0 4px rgba(0, 0, 0, .05) !important;
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+}
+
+body.dark-mode .vertical-timeline-element-icon,
+.dark-mode .vertical-timeline-element-icon {
+  box-shadow: 0 0 0 4px var(--bg-color), inset 0 2px 0 rgba(255, 255, 255, .08), 0 0 15px rgba(96, 165, 250, 0.3) !important;
+}
+
+.vertical-timeline-element-icon:hover {
+  transform: scale(1.2) rotate(10deg);
+}
+
+.vertical-timeline-element-icon svg {
+  width: 50%;
+  height: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: block;
+  margin: 0 !important;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  #education-container {
+    padding: 30px 10px;
+  }
+
+  .section-title {
+    font-size: 2.2rem;
+  }
+
+  .vertical-timeline-element-title {
+    font-size: 1.3rem !important;
+  }
+
+  .vertical-timeline-element-subtitle {
+    font-size: 1rem !important;
+  }
+
+  .vertical-timeline-element-content p {
+    font-size: 0.95rem !important;
+  }
 }

@@ -1,4 +1,4 @@
-import { RiExternalLinkFill } from 'react-icons/ri'
+import { RiExternalLinkFill, RiGithubFill } from 'react-icons/ri'
 import './index.css'
 
 const projectsData = [
@@ -70,7 +70,7 @@ const projectsData = [
     technologies: [
       'React.js',
       'Responsive Design',
-      'Context API (State Management)',
+      'Context API',
       'Local Storage',
       'WhatsApp API',
       'CSS',
@@ -85,7 +85,14 @@ const projectsData = [
 export default function Projects() {
   return (
     <section className="projects-page" id="projects-container-main">
-      <h1 className="page-heading">My Projects</h1>
+      <div className="projects-header">
+        <h1 className="section-title">
+          My <span className="highlight-text">Projects</span>
+        </h1>
+        <p className="section-subtitle">
+          Some of the recent work I've built
+        </p>
+      </div>
 
       <div className="projects-container">
         {projectsData.map(project => (
@@ -100,19 +107,25 @@ export default function Projects() {
                 />
                 <div className="project-info">
                   <h2>{project.title}</h2>
+                  <p className="hover-hint">Hover to view details</p>
                 </div>
               </div>
 
               {/* Back of the card */}
               <div className="card-back">
                 <h2>{project.title}</h2>
-                <p>{project.description}</p>
+                <div className="scrollable-desc">
+                  <p>{project.description}</p>
+                </div>
                 <div className="technologies-container">
-                  {project.technologies.map(tech => (
+                  {project.technologies.slice(0, 6).map(tech => (
                     <span key={tech} className="tech-tag">
                       {tech}
                     </span>
                   ))}
+                  {project.technologies.length > 6 && (
+                    <span className="tech-tag">+more</span>
+                  )}
                 </div>
                 <div className="links">
                   <a
@@ -121,7 +134,7 @@ export default function Projects() {
                     rel="noopener noreferrer"
                     className="github-link"
                   >
-                    GitHub
+                    <RiGithubFill className="btn-icon" /> Code
                   </a>
                   <a
                     href={project.liveLink}
@@ -129,7 +142,7 @@ export default function Projects() {
                     rel="noopener noreferrer"
                     className="demo-link"
                   >
-                    Live Demo <RiExternalLinkFill />
+                    Live Demo <RiExternalLinkFill className="btn-icon" />
                   </a>
                 </div>
               </div>

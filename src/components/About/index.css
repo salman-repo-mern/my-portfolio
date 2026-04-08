@@ -1,296 +1,379 @@
-@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap');
-
-/* ---------------- Animations ---------------- */
-@keyframes slideInRight {
-  from {
-    opacity: 0;
-    transform: translateX(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-/* Desktop: 16 slides (170px) + gaps (40px) */
-@keyframes slideLeft {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(calc(-16 * (170px + 40px)));
-  }
-}
-
-@keyframes fadeUp {
-  from {
-    opacity: 0;
-    transform: translateY(25px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* ---------------- Layout ---------------- */
-.mainContainer {
+/* Container styling */
+#about-container-main {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-top: 10vh;
-  padding: 20px;
-}
-
-/* ---------------- Skills Slider ---------------- */
-.skillsSlider {
-  width: 100%;
+  padding: 60px 20px;
+  position: relative;
   overflow: hidden;
-  margin-top: 30px;
-  padding: 20px 0;
-  animation: slideInRight 0.5s ease-out forwards;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
-.skillsSlider h2 {
+/* Header Styling */
+.about-header {
   text-align: center;
-  font-weight: 700;
-  font-family: 'Dancing Script', cursive;
-  font-size: 30px;
-  background: linear-gradient(90deg, #032d5b 0%, #1cefda 100%);
+  margin-bottom: 50px;
+}
+
+.section-title {
+  font-size: 2.8rem;
+  font-weight: 800;
+  margin-bottom: 15px;
+  letter-spacing: 1px;
+}
+
+.section-subtitle {
+  font-size: 1.1rem;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+
+body:not(.dark-mode) .section-title,
+.light-mode .section-title {
+  color: var(--text-main);
+}
+
+body:not(.dark-mode) .highlight-text,
+.light-mode .highlight-text {
+  background: var(--accent-gradient);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
-  color: transparent;
-  margin-bottom: 15px;
 }
 
-.sliderTrack {
-  display: flex;
-  gap: 40px;
-  white-space: nowrap;
-  flex-wrap: nowrap;
-  animation: slideLeft 20s linear infinite;
+body:not(.dark-mode) .section-subtitle,
+.light-mode .section-subtitle {
+  color: var(--text-muted);
 }
 
-/* ---------------- Skill Card ---------------- */
-.slide {
-  width: 190px;
-  min-width: 190px;
-  height: 170px;
-  padding: 20px;
-  background: #fff;
-  border-radius: 15px;
-  border: 1px solid #e4e4e4;
-  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.08);
-  transition:
-    transform 0.3s,
-    box-shadow 0.3s;
+body.dark-mode .section-title,
+.dark-mode .section-title {
+  color: var(--text-main);
+}
+
+body.dark-mode .highlight-text,
+.dark-mode .highlight-text {
+  background: var(--accent-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 15px rgba(96, 165, 250, 0.4);
+}
+
+body.dark-mode .section-subtitle,
+.dark-mode .section-subtitle {
+  color: var(--text-muted);
+}
+
+/* Base styles for cards */
+.about-card {
+  border-radius: 20px;
+  padding: 40px;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  height: 100%;
 }
 
-.slide:hover {
-  transform: scale(1.08);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+.about-card:hover {
+  transform: translateY(-8px);
 }
 
-.slideImage {
-  width: 80px;
-  height: 80px;
-  object-fit: contain;
-  margin-bottom: 12px;
+/* Light mode cards */
+body:not(.dark-mode) .about-card,
+.light-mode .about-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  box-shadow: 0 10px 30px -15px rgba(59, 130, 246, 0.25);
 }
 
-.slide p {
-  font-size: 1rem;
-  font-weight: 600;
-  margin: 0;
-  color: #333;
+body:not(.dark-mode) .about-card:hover,
+.light-mode .about-card:hover {
+  box-shadow: 0 20px 40px -15px rgba(59, 130, 246, 0.4);
+  border-color: rgba(59, 130, 246, 0.5);
 }
 
-/* ---------------- About Section ---------------- */
+body:not(.dark-mode) .about-card h3,
+.light-mode .about-card h3 {
+  background: var(--accent-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+body:not(.dark-mode) .about-card p,
+.light-mode .about-card p {
+  color: #444;
+  line-height: 1.8;
+  font-size: 1.05rem;
+}
+
+/* Dark mode cards */
+body.dark-mode .about-card,
+.dark-mode .about-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  box-shadow: 0 10px 40px -15px rgba(96, 165, 250, 0.1);
+}
+
+body.dark-mode .about-card:hover,
+.dark-mode .about-card:hover {
+  border-color: rgba(96, 165, 250, 0.4);
+  box-shadow: -8px 8px 30px rgba(96, 165, 250, 0.15), 8px -8px 30px rgba(139, 92, 246, 0.15);
+}
+
+body.dark-mode .about-card h3,
+.dark-mode .about-card h3 {
+  background: var(--accent-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+body.dark-mode .about-card p,
+.dark-mode .about-card p {
+  color: var(--text-muted);
+  line-height: 1.8;
+  font-size: 1.05rem;
+}
+
+/* About Layout */
 .about-top {
   width: 100%;
-  max-width: 1100px;
-  display: flex;
-  justify-content: space-between;
-  gap: 40px;
-  padding: 20px;
-  flex-wrap: wrap;
-}
-
-.about-left,
-.about-right {
-  flex: 1;
-  min-width: 280px;
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 30px;
+  margin-bottom: 50px;
 }
 
 .about-left h3,
 .about-right h3 {
-  font-size: 1.4rem;
-  margin-bottom: 10px;
-  text-align: center;
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
 }
 
-.about-left h3 {
-  background: linear-gradient(90deg, #0d47a1 40%, #00acc1 60%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.coding-name {
-  background: linear-gradient(90deg, #1a237e, #00e5ff);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  margin-bottom: 15px;
-}
-
-.about-left p {
-  font-size: 1rem;
-  line-height: 1.6;
-}
-
-/* ---------------- Achievements ---------------- */
+/* Achievements */
 .about-achievements {
   list-style: none;
   padding: 0;
   margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
 }
 
 .about-achievements li {
-  background: #fff;
-  padding: 10px 12px;
-  margin: 12px 0;
+  padding: 15px 20px;
   border-radius: 12px;
-  border: 1px solid #e4e4e4;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
-  font-size: 1rem;
-  font-weight: 500;
-  color: #333;
-  opacity: 0;
-  transform: translateY(20px);
-  animation: fadeUp 0.6s ease forwards;
-  transition:
-    transform 0.3s ease,
-    box-shadow 0.3s ease;
+  font-size: 1.05rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  transition: all 0.3s ease;
 }
 
-.about-achievements li:nth-child(1) {
-  animation-delay: 0.1s;
-}
-.about-achievements li:nth-child(2) {
-  animation-delay: 0.25s;
+body:not(.dark-mode) .about-achievements li,
+.light-mode .about-achievements li {
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.9), rgba(224, 247, 250, 0.5));
+  border: 1px solid rgba(59, 130, 246, 0.3);
+  color: #1e3a8a;
 }
 
-.about-achievements li:hover {
-  transform: translateY(-6px) scale(1.02);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+body:not(.dark-mode) .about-achievements li:hover,
+.light-mode .about-achievements li:hover {
+  transform: translateX(8px);
+  background: linear-gradient(90deg, #ffffff, rgba(224, 247, 250, 0.8));
+  box-shadow: 0 8px 25px rgba(59, 130, 246, 0.15);
+  border-color: rgba(59, 130, 246, 0.5);
+}
+
+body.dark-mode .about-achievements li,
+.dark-mode .about-achievements li {
+  background: linear-gradient(90deg, rgba(20, 20, 20, 0.8), rgba(40, 40, 40, 0.4));
+  border: 1px solid rgba(96, 165, 250, 0.1);
+  color: var(--text-main);
+}
+
+body.dark-mode .about-achievements li:hover,
+.dark-mode .about-achievements li:hover {
+  transform: translateX(8px);
+  border-color: rgba(96, 165, 250, 0.4);
+  background: linear-gradient(90deg, rgba(20, 20, 20, 0.9), rgba(96, 165, 250, 0.1));
+  box-shadow: 0 8px 25px rgba(96, 165, 250, 0.15);
+}
+
+/* Skills Slider */
+.skillsSlider {
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden;
+  padding: 20px 0 60px 0;
+  position: relative;
+}
+
+/* Add fade effect on edges of the slider */
+.skillsSlider::before,
+.skillsSlider::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  width: 15vw;
+  height: 100%;
+  z-index: 2;
+  pointer-events: none;
+}
+
+body:not(.dark-mode) .skillsSlider::before,
+.light-mode .skillsSlider::before {
+  left: 0;
+  background: linear-gradient(to right, var(--bg-color), transparent);
+}
+
+body:not(.dark-mode) .skillsSlider::after,
+.light-mode .skillsSlider::after {
+  right: 0;
+  background: linear-gradient(to left, var(--bg-color), transparent);
+}
+
+body.dark-mode .skillsSlider::before,
+.dark-mode .skillsSlider::before {
+  left: 0;
+  background: linear-gradient(to right, var(--bg-color), transparent);
+}
+
+body.dark-mode .skillsSlider::after,
+.dark-mode .skillsSlider::after {
+  right: 0;
+  background: linear-gradient(to left, var(--bg-color), transparent);
+}
+
+.skillsSlider h2 {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 50px;
+  color: var(--text-main);
+}
+
+.sliderTrack {
+  display: flex;
+  width: max-content;
+  gap: 30px;
+  padding: 20px 15px;
+  animation: scroll 35s linear infinite;
+}
+
+.sliderTrack:hover {
+  animation-play-state: paused;
+}
+
+@keyframes scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.slide {
+  width: 170px;
+  min-width: 170px;
+  height: 170px;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
   cursor: pointer;
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
 }
 
-/* ---------------- Dark Mode ---------------- */
-body.dark-mode .slide {
-  background: #aaa;
-  border: 1px solid #333;
-  box-shadow: 0 4px 18px rgba(255, 255, 255, 0.05);
+.slideImage {
+  width: 70px;
+  height: 70px;
+  object-fit: contain;
+  margin-bottom: 15px;
+  transition: transform 0.3s ease;
 }
 
-body.dark-mode .slide p {
-  color: #f7ff0b;
+.slide p {
+  font-size: 1.05rem;
+  font-weight: 600;
+  margin: 0;
+  text-align: center;
+  color: var(--primary-accent);
 }
 
-body.dark-mode .slideImage {
-  filter: brightness(0.9);
+/* Light mode slides */
+body:not(.dark-mode) .slide:hover,
+.light-mode .slide:hover {
+  transform: translateY(-12px) scale(1.05);
+  box-shadow: 0 15px 35px rgba(59, 130, 246, 0.25);
+  border-color: rgba(59, 130, 246, 0.4);
+  background: #ffffff;
 }
 
-body.dark-mode .slide:hover {
-  background: #aca3a3;
-  box-shadow: 0 8px 24px rgba(255, 255, 255, 0.08);
+/* Dark mode slides */
+body.dark-mode .slide,
+.dark-mode .slide {
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
 }
 
-body.dark-mode .about-left p,
-body.dark-mode .about-right h3 {
-  color: #f0f0f0;
+body.dark-mode .slide:hover,
+.dark-mode .slide:hover {
+  transform: translateY(-12px) scale(1.05);
+  border-color: rgba(96, 165, 250, 0.6);
+  box-shadow: 0 15px 35px rgba(96, 165, 250, 0.25), 0 0 15px rgba(139, 92, 246, 0.2);
+  background: var(--card-bg);
 }
 
-body.dark-mode .about-achievements li {
-  background: #1c1c1c;
-  color: #ffe600;
-  border: 1px solid #333;
-  box-shadow: 0 4px 12px rgba(255, 255, 255, 0.04);
+body.dark-mode .slide p,
+.dark-mode .slide p {
+  color: var(--text-main);
 }
 
-body.dark-mode .about-achievements li:hover {
-  box-shadow: 0 6px 18px rgba(255, 255, 255, 0.08);
+body.dark-mode .slide:hover p,
+.dark-mode .slide:hover p {
+  background: var(--accent-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: none;
 }
 
-/* ---------------- Responsive ---------------- */
+.slide:hover .slideImage {
+  transform: scale(1.2);
+}
 
-/* 768px */
+/* Responsive */
+@media (max-width: 900px) {
+  .about-top {
+    grid-template-columns: 1fr;
+  }
+}
+
 @media (max-width: 768px) {
-  @keyframes slideLeft {
-    0% {
-      transform: translateX(0);
-    }
-    100% {
-      transform: translateX(calc(-16 * (140px + 40px)));
-    }
+  #about-container-main {
+    padding: 40px 10px;
   }
-
-  .sliderTrack {
-    animation: slideLeft 15s linear infinite;
-  }
-
-  .slide {
-    width: 140px;
-    min-width: 140px;
-    height: 150px;
-  }
-
-  .slideImage {
-    width: 65px;
-    height: 65px;
-  }
+  .section-title { font-size: 2.2rem; }
+  .slide { width: 140px; min-width: 140px; height: 140px; }
+  .slideImage { width: 55px; height: 55px; }
 }
 
-/* 600px */
-@media (max-width: 600px) {
-  @keyframes slideLeft {
-    0% {
-      transform: translateX(0);
-    }
-    100% {
-      transform: translateX(calc(-16 * (100px + 20px)));
-    }
-  }
-
-  .sliderTrack {
-    gap: 20px;
-    animation: slideLeft 12s linear infinite;
-    flex-wrap: nowrap;
-    white-space: nowrap;
-  }
-
-  .slide {
-    width: 110px;
-    min-width: 110px;
-    height: 120px;
-  }
-
-  .slideImage {
-    width: 55px;
-    height: 55px;
-  }
-}
-
-/* 500px */
 @media (max-width: 500px) {
-  .sliderTrack {
-    animation: slideLeft 10s linear infinite;
-  }
+  .slide { width: 120px; min-width: 120px; height: 120px; }
+  .slideImage { width: 45px; height: 45px; }
+  .slide p { font-size: 0.9rem; }
 }

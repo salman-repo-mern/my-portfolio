@@ -1,6 +1,6 @@
 import { useState, useRef } from 'react'
 import emailjs from '@emailjs/browser'
-import { LuSend } from 'react-icons/lu'
+import { Send } from 'lucide-react'
 import './index.css'
 
 const Popup = ({ message, type, onDismiss }) => (
@@ -76,8 +76,7 @@ const Contact = () => {
       </div>
 
       <div className="row" id="containerStyle">
-        <div className="col" style={{ marginBottom: '40px' }}>
-          {/* Use a proper <form> element with onSubmit */}
+        <div className="col" style={{ marginBottom: '40px', width: '100%' }}>
           <form
             ref={form}
             onSubmit={sendMail}
@@ -88,7 +87,7 @@ const Contact = () => {
                 type="text"
                 className="input-field"
                 placeholder="Full Name"
-                name="name" // Add name attribute
+                name="name"
                 required
                 autoComplete="name"
                 value={formData.name}
@@ -98,7 +97,7 @@ const Contact = () => {
                 type="email"
                 className="input-field"
                 placeholder="Enter your Email"
-                name="email" // Add name attribute
+                name="email"
                 required
                 autoComplete="email"
                 value={formData.email}
@@ -109,7 +108,7 @@ const Contact = () => {
               type="text"
               className="input-field input-subject"
               placeholder="Brief topic of your message"
-              name="subject" // Add name attribute
+              name="subject"
               required
               autoComplete="off"
               value={formData.subject}
@@ -118,7 +117,7 @@ const Contact = () => {
             <div className="text-area">
               <textarea
                 placeholder="Type your message here....."
-                name="message" // Add name attribute
+                name="message"
                 required
                 autoComplete="off"
                 value={formData.message}
@@ -127,7 +126,7 @@ const Contact = () => {
             </div>
             <div className="form-button">
               <button className="btn" type="submit">
-                Send <LuSend style={{ marginLeft: '8px' }} />
+                Send <Send size={18} className="btn-icon-send" />
               </button>
             </div>
           </form>

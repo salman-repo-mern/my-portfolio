@@ -1,205 +1,375 @@
-/* --- Base Styles --- */
-.projects-page {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  padding: 40px 20px;
-  min-height: 100vh;
-  margin-top: 50px;
+/* Container styling */
+#projects-container-main {
+  padding: 60px 20px;
+  position: relative;
+  overflow: hidden;
+  max-width: 1250px;
+  margin: 0 auto;
 }
 
-.page-heading {
+/* Header Styling */
+.projects-header {
   text-align: center;
-  font-size: 2.5rem;
-  margin-bottom: 40px;
-  letter-spacing: 2px;
-  font-weight: 700;
-    background: linear-gradient(135deg, #ffd500 40%,cyan 50%,  #9b59b6 60%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  margin-bottom: 15px;
-  background-clip: text;
-  color: transparent;
+  margin-bottom: 50px;
 }
 
-/* --- Project Cards --- */
+.section-title {
+  font-size: 2.8rem;
+  font-weight: 800;
+  margin-bottom: 15px;
+  letter-spacing: 1px;
+}
+
+.section-subtitle {
+  font-size: 1.1rem;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  color: var(--text-muted);
+}
+
+body:not(.dark-mode) .section-title,
+.light-mode .section-title {
+  color: var(--text-main);
+}
+
+body:not(.dark-mode) .highlight-text,
+.light-mode .highlight-text {
+  background: var(--accent-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+body.dark-mode .section-title,
+.dark-mode .section-title {
+  color: var(--text-main);
+}
+
+body.dark-mode .highlight-text,
+.dark-mode .highlight-text {
+  background: var(--accent-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 15px rgba(96, 165, 250, 0.4);
+}
+
+/* --- Project Cards Grid --- */
 .projects-container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   gap: 40px;
+  perspective: 1500px;
 }
 
 .project-card {
   width: 100%;
-  perspective: 1000px;
+  aspect-ratio: 1/1.2;
+  cursor: pointer;
+  border-radius: 20px;
 }
 
 .card-inner {
   width: 100%;
-  height: 500px;
+  height: 100%;
   position: relative;
   transform-style: preserve-3d;
-  transition: transform 0.6s ease-in-out;
+  transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 .project-card:hover .card-inner {
-  transform: rotateY(180deg); /* Flip the card */
+  transform: rotateY(180deg);
 }
 
-/* --- Front of the Card --- */
+/* --- Shared Front/Back --- */
 .card-front,
 .card-back {
   position: absolute;
   width: 100%;
   height: 100%;
   backface-visibility: hidden;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  border-radius: 15px;
+  border-radius: 20px;
+  overflow: hidden;
 }
 
+/* --- Card Front --- */
 .card-front {
-  background: transparent;
+  background: var(--card-bg);
+  display: flex;
+  flex-direction: column;
 }
 
 .project-image {
   width: 100%;
-  height: 250px;
+  height: 100%;
   object-fit: cover;
-  border-radius: 15px 15px 0 0;
+  transition: transform 0.5s ease;
+}
+
+.project-card:hover .project-image {
+  transform: scale(1.05);
+}
+
+/* Front Info Overlay */
+.card-front::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0.3) 50%, transparent 100%);
+  pointer-events: none;
+}
+
+.project-info {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 30px 20px;
+  z-index: 2;
+  text-align: center;
 }
 
 .project-info h2 {
-  color: #c5c03c;
-  font-size: 1.5rem;
-  font-weight: bold;
-  margin-top: 15px;
+  color: #ffffff;
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 5px;
+  text-shadow: 0 4px 15px rgba(0, 0, 0, 0.8);
 }
 
-/* --- Back of the Card --- */
+.hover-hint {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.9rem;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: all 0.3s ease;
+}
+
+.project-card:hover .hover-hint {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* --- Card Back --- */
 .card-back {
-  background: linear-gradient(135deg, #e1e5ee, #f0f3f8);
-  transform: rotateY(180deg); /* Initially rotated so it's hidden */
-  padding: 20px;
-  text-align: center;
-  overflow: hidden; /* Ensure text does not overflow the card */
+  transform: rotateY(180deg);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 30px 25px;
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  background: var(--card-bg);
 }
 
 .card-back h2 {
-  font-size: 1.5rem;
-  color: #2c3e50;
-  white-space: nowrap; /* Prevent text from wrapping */
-  overflow: hidden;
-  text-overflow: ellipsis; /* Add ellipsis if text overflows */
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin-bottom: 15px;
+  text-align: center;
+  position: relative;
+  padding-bottom: 10px;
+  background: var(--accent-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
-.card-back p {
-  font-size: 1rem;
-  color: #555;
-  margin-top: 15px;
-  overflow: hidden;
-  text-overflow: ellipsis; /* Add ellipsis if text overflows */
+.card-back h2::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 4px;
+  border-radius: 2px;
+  background: var(--accent-gradient);
 }
 
-/* === Fix Starts Here === */
+.scrollable-desc {
+  flex: 1;
+  overflow-y: auto;
+  margin-bottom: 15px;
+  padding-right: 5px;
+}
+
+.scrollable-desc p {
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: var(--text-main);
+}
+
+/* Custom shadow scrollbar */
+.scrollable-desc::-webkit-scrollbar {
+  width: 4px;
+}
+
+.scrollable-desc::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.05);
+}
+
+.scrollable-desc::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+}
+
+/* Technology Pills */
 .technologies-container {
-  margin-top: 20px;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 8px; /* Consistent spacing */
+  gap: 8px;
+  margin-bottom: 25px;
 }
 
 .tech-tag {
-  background-color: #e1e5ee;
-  color: #333;
-  padding: 5px 12px;
-  border-radius: 20px;
-  font-size: 0.8rem;
-  font-weight: 500;
-  /* Removed margin because 'gap' handles spacing now */
+  padding: 6px 14px;
+  border-radius: 30px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+  background: var(--bg-color);
+  color: var(--primary-accent);
+  border: 1px solid var(--border-color);
 }
-/* === Fix Ends Here === */
 
+.tech-tag:hover {
+  transform: translateY(-2px);
+  background: var(--bg-color);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  border-color: var(--primary-accent);
+}
+
+/* Links Component */
 .links {
-  margin-top: 20px;
   display: flex;
   justify-content: center;
-  gap: 10px;
+  gap: 15px;
 }
 
 .github-link,
 .demo-link {
-  padding: 10px 20px;
-  border-radius: 30px;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 0;
+  border-radius: 12px;
   text-decoration: none;
-  font-weight: 600;
-  color: #fff;
-  text-align: center;
-  transition: all 0.3s ease;
+  font-weight: 700;
+  font-size: 0.95rem;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 .github-link {
-  background-color: #24292e;
+  background: var(--bg-color);
+  color: var(--text-main);
+  border: 1px solid var(--border-color);
 }
 
 .github-link:hover {
-  background-color: #343a40;
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
 }
 
 .demo-link {
-  background-color: #28a745;
-  display: flex;
-  align-items: center;
-  gap: 5px;
+  background: var(--accent-gradient);
+  color: #fff;
+  border: none;
+  box-shadow: 0 5px 15px rgba(59, 130, 246, 0.3);
 }
 
 .demo-link:hover {
-  background-color: #218838;
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 12px 25px rgba(59, 130, 246, 0.4);
+}
+
+/* --- Light Mode Card Specifics --- */
+body:not(.dark-mode) .card-front,
+.light-mode .card-front {
+  border: 1px solid var(--border-color);
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.15);
+}
+
+body:not(.dark-mode) .card-back,
+.light-mode .card-back {
+  border: 1px solid var(--border-color);
+  box-shadow: 0 15px 40px -10px rgba(59, 130, 246, 0.2);
+}
+
+body:not(.dark-mode) .project-card:hover .card-back,
+.light-mode .project-card:hover .card-back {
+  box-shadow: 0 20px 45px -10px rgba(59, 130, 246, 0.35);
+}
+
+/* --- Dark Mode Card Specifics --- */
+body.dark-mode .card-front,
+.dark-mode .card-front {
+  border: 1px solid var(--border-color);
+  box-shadow: 0 10px 40px -15px rgba(96, 165, 250, 0.1);
+}
+
+body.dark-mode .card-back,
+.dark-mode .card-back {
+  border: 1px solid var(--border-color);
+  box-shadow: 0 15px 40px -10px rgba(96, 165, 250, 0.2);
+}
+
+body.dark-mode .project-card:hover .card-back,
+.dark-mode .project-card:hover .card-back {
+  box-shadow: -10px 10px 40px rgba(96, 165, 250, 0.2), 10px -10px 40px rgba(139, 92, 246, 0.2);
+}
+
+body.dark-mode .scrollable-desc::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+body.dark-mode .scrollable-desc::-webkit-scrollbar-thumb {
+  background: rgba(96, 165, 250, 0.3);
 }
 
 /* --- Responsive Styles --- */
-@media (max-width: 600px) {
-  .projects-page {
-    padding: 30px 15px;
+@media (max-width: 768px) {
+  #projects-container-main {
+    padding: 40px 10px;
+  }
+
+  .section-title {
+    font-size: 2.2rem;
   }
 
   .projects-container {
-    grid-template-columns: 1fr; /* Single column for smaller screens */
-    gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
   }
 
-  .card-inner {
-    height: 400px; /* Adjust card height for small screens */
+  .project-card {
+    aspect-ratio: 1/1.3;
   }
 
-  .project-image {
-    height: 180px; /* Reduce image height for smaller screens */
-  }
-
-  .card-back {
-    padding: 15px;
+  .project-info h2 {
+    font-size: 1.5rem;
   }
 
   .card-back h2 {
     font-size: 1.4rem;
-    white-space: normal; /* Allow text to wrap on smaller screens */
   }
 
-  .card-back p {
-    font-size: 0.9rem;
-  }
-
-  .technologies-container {
-    gap: 5px; /* Slightly smaller gap for mobile */
+  .scrollable-desc p {
+    font-size: 0.85rem;
   }
 
   .tech-tag {
-    font-size: 0.75rem; /* Smaller font size for tech tags */
+    font-size: 0.7rem;
+    padding: 5px 10px;
   }
 
-  .links {
-    justify-content: space-around;
-    gap: 10px;
+  .github-link,
+  .demo-link {
+    font-size: 0.85rem;
+    padding: 10px 0;
   }
 }

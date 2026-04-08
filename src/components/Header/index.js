@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react'
-import { FaBars, FaTimes } from 'react-icons/fa'
-import { AiOutlineEye } from 'react-icons/ai'
+import { Menu, X, Eye, Sun, Moon } from 'lucide-react'
 import './index.css'
 
 const navLinks = [
@@ -38,7 +37,7 @@ const Header = ({ isDarkMode, onToggleTheme, onNavigate }) => {
   // --- NEW: Effect for Active Link Highlighting ---
   useEffect(() => {
     const sections = navLinks.map(({ path }) =>
-      document.getElementById(path === '/' ? 'home' : path.substring(1)),
+      document.getElementById(path === '/' ? 'home-hero' : path.substring(1)), // Fix targeted ID for home
     )
 
     const observer = new IntersectionObserver(
@@ -46,7 +45,7 @@ const Header = ({ isDarkMode, onToggleTheme, onNavigate }) => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
             setActiveSection(
-              `/${entry.target.id === 'home' ? '' : entry.target.id}`,
+              `/${entry.target.id === 'home-hero' ? '' : entry.target.id}`,
             )
           }
         })
@@ -92,7 +91,7 @@ const Header = ({ isDarkMode, onToggleTheme, onNavigate }) => {
             handleNavClick('/')
           }}
         >
-          &lt; Salman /&gt;
+          &lt; <span className="logo-name">Salman</span> /&gt;
         </a>
 
         <div className={`header__menu ${isMobileMenuOpen ? 'active' : ''}`}>
@@ -116,36 +115,38 @@ const Header = ({ isDarkMode, onToggleTheme, onNavigate }) => {
 
           <div className="header__buttons_mobile">
             <button
-              className="btn resume-btn"
+              className="btn header-resume-btn"
               onClick={onDownloadResume}
               type="button"
             >
-              Resume <AiOutlineEye />
+              Resume <Eye size={18} className="btn-icon" />
             </button>
             <button
               onClick={onToggleTheme}
               className="theme-toggle-btn"
               type="button"
+              aria-label="Toggle theme"
             >
-              {isDarkMode ? '☀️' : '🌙'}
+              {isDarkMode ? <Sun size={20} /> : <Moon size={20} />}
             </button>
           </div>
         </div>
 
         <div className="header__buttons_desktop">
           <button
-            className="btn resume-btn"
+            className="btn header-resume-btn"
             onClick={onDownloadResume}
             type="button"
           >
-            Check Resume <AiOutlineEye />
+            Resume <Eye size={18} className="btn-icon" />
           </button>
           <button
             onClick={onToggleTheme}
             className="theme-toggle-btn"
             type="button"
+            aria-label="Toggle theme"
           >
-            {isDarkMode ? '☀️ Light' : '🌙 Dark'}
+            {isDarkMode ? <Sun size={20} /> : <Moon size={20} />}
           </button>
         </div>
 
@@ -155,7 +156,7 @@ const Header = ({ isDarkMode, onToggleTheme, onNavigate }) => {
           aria-label="Toggle Menu"
           type="button"
         >
-          {isMobileMenuOpen ? <FaTimes /> : <FaBars />}
+          {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
       </nav>
     </header>

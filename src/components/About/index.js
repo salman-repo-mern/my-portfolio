@@ -1,4 +1,5 @@
 import './index.css'
+import { FaLaptopCode, FaTrophy, FaCheckCircle } from 'react-icons/fa'
 
 const skills = [
   {
@@ -80,33 +81,57 @@ export default function About() {
 
   return (
     <div className="mainContainer" id="about-container-main">
+      <div className="about-header">
+        <h1 className="section-title">
+          About <span className="highlight-text">Me</span>
+        </h1>
+        <p className="section-subtitle">
+          My journey, skills, and achievements
+        </p>
+      </div>
+
       <div className="about-top">
-        <div className="about-left">
-          <h3>My Journey</h3>
+        <div className="about-card about-left">
+          <h3>
+            <FaLaptopCode style={{ color: '#0288d1' }} /> My Journey
+          </h3>
           <p>
             I started my coding journey with a strong curiosity towards building
             real-world applications. Over time, I transitioned into MERN stack
             development, learning how to design scalable systems, clean UI, and
             efficient backend logic. I enjoy building things that make an
-            impact.
+            impact and continually pushing boundaries to craft dynamic digital
+            experiences.
           </p>
         </div>
-        <div className="about-right">
+
+        <div className="about-card about-right">
           <h3>
-            <span className="coding-name"> My Competitive Coding</span>
+            <FaTrophy style={{ color: '#ffb300' }} /> Competitive Coding
           </h3>
           <ul className="about-achievements">
-            <li>✔️ Solved 100+ coding problems</li>
-            <li>✔️ Strong fundamentals in DSA</li>
+            <li>
+              <FaCheckCircle style={{ color: '#00e676', minWidth: '20px' }} />
+              Solved 100+ coding problems
+            </li>
+            <li>
+              <FaCheckCircle style={{ color: '#00e676', minWidth: '20px' }} />
+              Strong fundamentals in Data Structures & Algorithms
+            </li>
           </ul>
         </div>
       </div>
+
       <div className="skillsSlider">
-        <h2>I am Familiar with the below technologies</h2>
+        <h2>Technologies I Work With</h2>
         <div className="sliderTrack">
-          {allSkills.concat(allSkills).map(item => (
-            <div className="slide" key={item.name}>
-              <img src={item.image} alt={item.name} className="slideImage" />
+          {allSkills.concat(allSkills).map((item, index) => (
+            <div className="slide" key={index}>
+              <img
+                src={item.image.startsWith('/') ? item.image : `/${item.image}`}
+                alt={item.name}
+                className="slideImage"
+              />
               <p>{item.name}</p>
             </div>
           ))}
