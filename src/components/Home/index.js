@@ -34,13 +34,13 @@ const Home = () => {
   useEffect(() => {
     const handleTyping = () => {
       const currentRoleText = roles[roleIndex.current]
-      let typeSpeed = 150
+      let typeSpeed = 100 // Slightly faster typing
 
       if (isDeleting.current) {
         // Deleting text
         setCurrentRole(currentRoleText.substring(0, charIndex.current - 1))
         charIndex.current--
-        typeSpeed = 80
+        typeSpeed = 50 // Faster deleting
       } else {
         // Typing text
         setCurrentRole(currentRoleText.substring(0, charIndex.current + 1))
@@ -77,7 +77,7 @@ const Home = () => {
 
   const onCheckResume = () => {
     window.open(
-      'https://drive.google.com/file/d/1ujIgN06pdL8U0nolSdfj9njQqBQJI7Wl/view?usp=sharing',
+      'https://drive.google.com/file/d/13evcO39hYe_3R5AlAIY72x1pST9J-IZ-/view?usp=drive_link',
       '_blank',
       'noreferrer',
     )
@@ -104,8 +104,7 @@ const Home = () => {
             <div className="featured-role">
               <p className="role-text">
                 <span className="typedText">
-                  {currentRole}
-                  <span className="cursor">|</span>
+                  {currentRole}<span className="cursor"></span>
                 </span>
               </p>
             </div>

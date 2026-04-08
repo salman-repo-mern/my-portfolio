@@ -12,7 +12,7 @@ const navLinks = [
 
 const onDownloadResume = () => {
   window.open(
-    'https://drive.google.com/file/d/1ujIgN06pdL8U0nolSdfj9njQqBQJI7Wl/view?usp=sharing',
+    'https://drive.google.com/file/d/13evcO39hYe_3R5AlAIY72x1pST9J-IZ-/view?usp=drive_link',
     '_blank',
     'noreferrer',
   )
