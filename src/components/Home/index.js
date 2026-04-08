@@ -34,13 +34,13 @@ const Home = () => {
   useEffect(() => {
     const handleTyping = () => {
       const currentRoleText = roles[roleIndex.current]
-      let typeSpeed = 100 // Slightly faster typing
+      let typeSpeed = 100
 
       if (isDeleting.current) {
         // Deleting text
         setCurrentRole(currentRoleText.substring(0, charIndex.current - 1))
         charIndex.current--
-        typeSpeed = 50 // Faster deleting
+        typeSpeed = 50
       } else {
         // Typing text
         setCurrentRole(currentRoleText.substring(0, charIndex.current + 1))
