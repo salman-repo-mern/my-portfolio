@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from 'react'
 import { Mail, Linkedin, Github, FileText, Eye } from 'lucide-react'
 import './index.css'
 
+const profile = './profile_picture.png'
 // --- Reusable SocialLink Component ---
 const SocialLink = ({ href, label, icon: Icon, color }) => (
   <a
@@ -22,8 +23,6 @@ const Home = () => {
     'Front-end Developer',
     'Back-end Developer',
     'MERN Stack Developer',
-    'UI/UX Enthusiast',
-    'Java Developer'
   ]).current
 
   const roleIndex = useRef(0)
@@ -56,13 +55,13 @@ const Home = () => {
         // Finished deleting, move to the next role
         isDeleting.current = false
         roleIndex.current = (roleIndex.current + 1) % roles.length
-        typeSpeed = 500
+        typeSpeed = 450
       }
 
       timeoutId.current = setTimeout(handleTyping, typeSpeed)
     }
 
-    timeoutId.current = setTimeout(handleTyping, 500)
+    timeoutId.current = setTimeout(handleTyping, 450)
 
     return () => clearTimeout(timeoutId.current)
   }, [roles])
@@ -158,7 +157,7 @@ const Home = () => {
             <div className="floating-container">
               <div className="image-wrapper">
                 <img
-                  src="https://res.cloudinary.com/dusyxcqt9/image/upload/v1748608874/WhatsApp_Image_2025-05-30_at_6.10.29_PM_f6yppx.jpg"
+                  src={profile}
                   alt="Salman's profile"
                   className="main-image"
                 />
